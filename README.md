@@ -126,22 +126,6 @@ sed -i 's/\r$//' test.sh   # Windows satir sonu duzeltme (gerekirse)
 chmod +x test.sh
 ./test.sh
 ```
-
-## Teslim notu
-
-Sisteme yuklenecek zip icinde klasor adi: **G231210561**
-
-```
-G231210561/
-  tarsau.c
-  Makefile
-  README.md
-  RAPOR.pdf
-  test.sh          (istege bagli)
-```
-
-GitHub deposu rapora eklenir (gelistirme sureci).
-
 ---
 
 *Sakarya Üniversitesi — Bilgisayar Mühendisliği, Sistem Programlama*
