@@ -44,19 +44,37 @@ make clean
 **Arşiv oluşturma:**
 
 ```bash
-./tarsau -b t1.txt t2.txt t3.txt -o deneme.sau
+./tarsau -b t1 t2 t3 t4.txt t5.dat -o s1.sau
 ```
+
+Çıktı: `Dosyalar birleştirildi.`
 
 `-o` yazılmazsa çıktı dosyası varsayılan olarak **`a.sau`** olur.
 
 **Arşiv açma:**
 
 ```bash
-./tarsau -a deneme.sau
+./tarsau -a s1.sau d1
+```
+
+Çıktı örneği: `d1 dizininde t1, t2, t3, t4.txt, t5.dat dosyaları açıldı.`
+
+```bash
+./tarsau -a deneme.sau              # gecerli dizine
 ./tarsau -a deneme.sau cikti_klasoru
 ```
 
-İkinci komutta dosyalar belirtilen klasöre çıkarılır. Klasör adında boşluk yoksa ve klasör yoksa program önce klasörü oluşturuyor; açılan dosyaların izinleri arşivlenirken kaydedildiği gibi `chmod` ile geri yükleniyor.
+Klasör adında boşluk yoksa ve klasör yoksa program önce klasörü oluşturur; izinler `chmod` ile geri yüklenir.
+
+**İzin testi (WSL):** Windows diski (`/mnt/c/...`) üzerinde `chmod` genelde 777 gösterir. Gerçek izin testi için:
+
+```bash
+mkdir -p ~/tarsau-test && cp tarsau.c Makefile ~/tarsau-test/
+cd ~/tarsau-test && make
+echo "test" > izin.txt && chmod 754 izin.txt
+./tarsau -b izin.txt -o izin.sau && rm izin.txt
+./tarsau -a izin.sau && stat -c "%a" izin.txt
+```
 
 ## Ödevde istenen kurallar (özet)
 
@@ -98,11 +116,31 @@ Arşiv dosyası iki bölümden oluşuyor:
 | `tarsau.c` | Ana program kaynağı |
 | `Makefile` | Derleme kuralları |
 | `test.sh` | Linux’ta hızlı deneme betiği |
+| `RAPOR.md` | Proje raporu taslağı (PDF’e aktarilir) |
 | `README.md` | Bu dosya |
+
+## Test
+
+```bash
+sed -i 's/\r$//' test.sh   # Windows satir sonu duzeltme (gerekirse)
+chmod +x test.sh
+./test.sh
+```
 
 ## Teslim notu
 
-Ödev tesliminde kaynak kodlar ve rapor, **G231210561** adlı klasörde zip/rar olarak sisteme yükleniyor. Bu GitHub deposu geliştirme sürecini göstermek için tutuluyor.
+Sisteme yuklenecek zip icinde klasor adi: **G231210561**
+
+```
+G231210561/
+  tarsau.c
+  Makefile
+  README.md
+  RAPOR.pdf
+  test.sh          (istege bagli)
+```
+
+GitHub deposu rapora eklenir (gelistirme sureci).
 
 ---
 

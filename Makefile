@@ -1,10 +1,24 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -g
+# tarsau - Sistem Programlama proje odevi (G231210561)
+# Makefile: derleme ve baglama kurallari
 
-all: tarsau
+COMPILER = gcc
+CFLAGS   = -Wall -Wextra -g
+OBJS     = tarsau.o
+EXE      = tarsau
 
-tarsau: tarsau.c
-	$(CC) $(CFLAGS) -o tarsau tarsau.c
+# Varsayilan hedef: make yazildiginda calisir
+all : ${EXE}
 
-clean:
-	rm -f tarsau
+# Baglama: obje dosyalarindan calistirilabilir dosya uretir
+${EXE} : ${OBJS}
+	${COMPILER} -o ${EXE} ${OBJS}
+	@echo == Derleme islemi basari ile tamamlandi!.. ==
+
+# Derleme: kaynak dosyadan obje dosyasi uretir
+tarsau.o : tarsau.c
+	${COMPILER} ${CFLAGS} -c tarsau.c
+
+# Temizlik: olusan dosyalari siler
+clean :
+	rm -f ${EXE} ${OBJS}
+	@echo == Temizleme islemi tamamlandi!.. ==

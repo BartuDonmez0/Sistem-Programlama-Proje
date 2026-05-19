@@ -1,10 +1,24 @@
+# Derleme ciktisi
 tarsau
-*.sau
 *.o
+
+# Test / arsiv dosyalari
+*.sau
+*.bin
+
+# Test dosya ve dizinleri
+t1
+t2
+t3
+t4.txt
+t5.dat
 t1.txt
 t2.txt
 t3.txt
-t4.txt
+t7
+tek.txt
+izin.txt
 bad.bin
 fake.sau
+d1/
 cikti_klasor/
