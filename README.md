@@ -107,25 +107,29 @@ Arşiv dosyası iki bölümden oluşuyor:
 1. Önce `.sau` formatını kağıt üzerinde çizip organizasyon + veri bölümünü netleştirdim.  
 2. `-b` tarafında `stat` ile boyut ve izinleri alıp, dosyanın gerçekten düz metin olup olmadığını bayt bayt kontrol ettim.  
 3. `-a` tarafında 10 baytlık boyutu okuyup metadata’yı `strtok` ile parçaladım; her dosya için tam `boyut` kadar byte okumaya dikkat ettim.  
-4. Son aşamada `test.sh` ile birkaç senaryoyu (normal arşiv, varsayılan `a.sau`, alt dizin, hatalı dosya) denedim.
+4. Son aşamada birkaç farklı senaryoyu (normal arşiv oluşturma, varsayılan a.sau arşivi, alt dizine arşiv açma, hatalı dosya kontrolü) manuel olarak test ettim.
 
 ## Dosyalar
 
 | Dosya | Açıklama |
 |-------|----------|
-| `tarsau.c` | Ana program kaynağı |
+| `tarsau.c` | Ana program kaynak kodu |
 | `Makefile` | Derleme kuralları |
-| `test.sh` | Linux’ta hızlı deneme betiği |
-| `RAPOR.md` | Proje raporu taslağı (PDF’e aktarilir) |
+| `Rapor.pdf` | Proje raporu |
 | `README.md` | Bu dosya |
 
-## Test
+## Teslim notu
 
-```bash
-sed -i 's/\r$//' test.sh   # Windows satir sonu duzeltme (gerekirse)
-chmod +x test.sh
-./test.sh
+Sisteme yüklenecek zip içindeki klasör adı: **G231210561**
+
 ```
+G231210561/
+  tarsau.c
+  Makefile
+  README.md
+  Rapor.pdf
+```
+
 ---
 
 *Sakarya Üniversitesi — Bilgisayar Mühendisliği, Sistem Programlama*
